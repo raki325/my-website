@@ -1,0 +1,53 @@
+const target = document.getElementById("target");
+const scoreText = document.getElementById("score");
+const timeText = document.getElementById("time");
+const startButton = document.getElementById("startButton");
+const gameArea = document.getElementById("gameArea");
+
+let score = 0;
+let timeLeft = 30;
+let timer;
+let playing = false;
+
+target.style.display = "none";
+
+function moveTarget() {
+  const maxX = gameArea.clientWidth - target.offsetWidth;
+  const maxY = gameArea.clientHeight - target.offsetHeight;
+
+  target.style.left = `${Math.random() * maxX}px`;
+  target.style.top = `${Math.random() * maxY}px`;
+}
+
+target.addEventListener("click", () => {
+  if (!playing) return;
+
+  score++;
+  scoreText.textContent = score;
+  moveTarget();
+});
+
+startButton.addEventListener("click", () => {
+  score = 0;
+  timeLeft = 30;
+  playing = true;
+
+  scoreText.textContent = score;
+  timeText.textContent = timeLeft;
+  target.style.display = "block";
+  startButton.disabled = true;
+  moveTarget();
+
+  timer = setInterval(() => {
+    timeLeft--;
+    timeText.textContent = timeLeft;
+
+    if (timeLeft === 0) {
+      clearInterval(timer);
+      playing = false;
+      target.style.display = "none";
+      startButton.disabled = false;
+      alert(`Game over! Your score was ${score}.`);
+    }
+  }, 1000);
+});

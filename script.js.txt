@@ -1,5 +1,0 @@
-document
-  .getElementById("helloButton")
-  .addEventListener("click", () => {
-    document.getElementById("message").textContent = "It works!";
-  });
