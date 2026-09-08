@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Website</title>
+  <title>Click the Target</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <h1>Welcome to my website</h1>
-    <p>This is my first webpage.</p>
-    <button id="helloButton">Click me</button>
-    <p id="message"></p>
-  </main>
+  <h1>Click the Target</h1>
+  <p>Score: <span id="score">0</span></p>
+  <p>Time: <span id="time">30</span></p>
+
+  <div id="gameArea">
+    <button id="target">Click me!</button>
+  </div>
+
+  <button id="startButton">Start Game</button>
 
   <script src="script.js"></script>
 </body>
